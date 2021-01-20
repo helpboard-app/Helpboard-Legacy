@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Help Board - Version 1.0.0</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"
+		integrity="sha512-mA5b7w9mZvGLWgjIqp9KhWNzkkZ/H3gC4Ua6GOn9m/xl1UF4ghH8GsriKvAYxLsxoKvn6NdebW7kZ6iGB3CGSg=="
+		crossorigin="anonymous"></script>
+	<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+	<script>
+		// Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher("3b954feefe6f247a5008", {
+        cluster: "us2"
+      });
+
+      var channel = pusher.subscribe("my-channel");
+      channel.bind("my-event", function(data) {
+        alert(JSON.stringify(data));
+      });
+	</script>
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="/index.html">
+				Help Board
+			</a>
+
+			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+				data-target="navbarBasicExample">
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+				<span aria-hidden="true"></span>
+			</a>
+		</div>
+
+		<div id="navbarBasicExample" class="navbar-menu">
+			<div class="navbar-start">
+				<a class="navbar-item">
+					Home
+				</a>
+
+				<a class="navbar-item">
+					What is this
+				</a>
+			</div>
+
+			<a class="navbar-item">
+				How to use this
+			</a>
+		</div>
+
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button is-primary">
+						<strong>Make a Help Board</strong>
+					</a>
+					<a class="button is-light">
+						Join a Help Board
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</nav>
+
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+			<h1 class="title">
+				Help Board
+			</h1>
+			<p class="subtitle">
+				Please type your name and Help Board code below to join the Help
+				Board.
+			</p>
+			<div class="field">
+				<p class="control">
+					<input class="input" type="text" placeholder="Your Name" />
+          </p>
+			</div>
+			<div class="field">
+				<p class="control">
+					<input
+              class="input"
+              type="text"
+              placeholder="Your Help Board Code"
+            />
+          </p>
+			</div>
+			<div class="field">
+				<p class="control">
+					<button class="button is-success">
+              Join
+            </button>
+				</p>
+			</div>
+		</div>
+	</section>
+	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
+      Name: <input type="text" id="help-board-name" /> Code:
+      <input type="text" id="help-board-code" />
+      <input type="submit" />
+    </form> -->
+
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+	<script>
+		// TODO: Replace the following with your app's Firebase project configuration
+      // For Firebase JavaScript SDK v7.20.0 and later, `measurementId` is an optional field
+      var firebaseConfig = {
+        // ...
+      };
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+	</script>
+
+	<script>
+		const inputField = document.getElementById("help-board-name");
+      function helpboardsubmit() {
+        alert(document.getElementById("help-board-name").value);
+        alert(document.getElementById("help-board-code").value);
+      }
+	</script>
+	<footer class="footer">
+		<div class="content has-text-centered">
+			<p>
+				<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>. Version
+				1.0.0 Beta. <a href="https://stats.uptimerobot.com/Pgo6wu4nAZ">Service Status</a> </p>
+		</div>
+	</footer>
+</body>
+
+</html>

@@ -12,19 +12,6 @@
 	<script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
 	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-	<script>
-		// Enable pusher logging - don't include this in production
-      Pusher.logToConsole = true;
-
-      var pusher = new Pusher("3b954feefe6f247a5008", {
-        cluster: "us2"
-      });
-
-      var channel = pusher.subscribe("my-channel");
-      channel.bind("my-event", function(data) {
-        alert(JSON.stringify(data));
-      });
-	</script>
 
 <body>
 	<section class="section">

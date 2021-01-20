@@ -90,13 +90,7 @@
 				<div class="notification">
 					<div class="columns">
 						<div class="column">
-							<button class="button is-primary" onclick="launchQueue()">Queue View</button>
-						</div>
-						<div class="column">
-							<button class="button is-primary" onclick="launchQuestiondesk()">Questiondesk View</button>
-						</div>
-						<div class="column">
-							<button class="button is-primary" onclick="launchSettings()">Settings</button>
+							<button class="button is-primary" onclick="launchHome()">Exit Questiondesk</button>
 						</div>
 					</div>
 				</div>
@@ -109,16 +103,11 @@
 			<div class="container is-max-desktop">
 				<div class="content has-text-centered">
 					<div id="activeView">
-						<h1 class="title">Please type your name and then click a view to start anwsering questions.</h1>
-						<div class="field">
-							<div class="control">
-								<input class="input" type="text" placeholder="Name">
-                </div>
-							</div>
-						</div>
+						<h1 class="title">Questiondesk Version 1.0.0 Beta</h1>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 
@@ -131,6 +120,9 @@
     }
     function launchSettings(){
       window.location = "/settings.html?i=" + id;
+    }
+    function launchHome(){
+      window.location = "/viewer.html?i=" + id;
     }
 	</script>
 

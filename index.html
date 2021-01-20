@@ -16,7 +16,17 @@
 		var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101297420);
 	</script>
 	<script async src="//static.getclicky.com/js"></script>
+	<script>
+		var pusher = new Pusher('3b954feefe6f247a5008', {
+      cluster: 'us2'
+    });
+    var chatChannel = pusher.subscribe('presence-chat');
 
+		chatChannel.bind('pusher:subscription_succeeded', function() {
+      var wasTriggered = pusher.trigger('client-event', {some: 'data'});
+      console.log(wasTriggered);
+  });
+	</script>
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/index.html">

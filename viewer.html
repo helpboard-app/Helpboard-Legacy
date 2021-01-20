@@ -90,13 +90,13 @@
 				<div class="notification">
 					<div class="columns">
 						<div class="column">
-							<button class="button is-primary" >Queue View</button>
+							<button class="button is-primary" onclick="launchQueue()">Queue View</button>
 						</div>
 						<div class="column">
 							<button class="button is-primary" onclick="launchQuestiondesk()">Questiondesk View</button>
 						</div>
 						<div class="column">
-							<button class="button is-primary">Settings</button>
+							<button class="button is-primary" onclick="launchSettings()">Settings</button>
 						</div>
 					</div>
 				</div>
@@ -107,18 +107,25 @@
 	<section class="section">
 		<div class="container">
 			<div class="container is-max-desktop">
-				<div class="content has-te<xt-centered">
+				<div class="content has-text-centered">
 					<div id="activeView">
-
+						<h1 class="title">Click a view to start using your help board.</h1>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 
 	<script>
 		function launchQuestiondesk(){
       window.location = "/qdesk.html?i=" + id;
+    }
+    function launchQueue(){
+      window.location = "/queue.html?i=" + id;
+    }
+    function launchSettings(){
+      window.location = "/settings.html?i=" + id;
     }
 	</script>
 

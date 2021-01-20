@@ -118,18 +118,7 @@
 
 	<script>
 		function launchQuestiondesk(){
-      var ifrm = document.createElement('iframe');
-ifrm.setAttribute('id', 'questiondesk'); // assign an id
-
-//document.body.appendChild(ifrm); // to place at end of document
-
-// to place before another page element
-var el = document.getElementById('activeView');
-el.parentNode.insertBefore(ifrm, el);
-
-// assign url
-ifrm.setAttribute('src', 'index.html');
-ifrm.setAttribute('class', 'responsive-iframe');
+      window.location = "/qdesk.html?i=" + id;
     }
 	</script>
 

@@ -70,10 +70,18 @@
 <body>
 	<section class="section">
 		<div class="container">
-      
+			<div class="container is-max-desktop">
+				<div class="notification is-primary" id="id-title">
+					$id
+				</div>
+			</div>
 		</div>
 	</section>
-
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('i');
+    document.getElementById("id-title").innerHTML = id;
+	</script>
 
 	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
       Name: <input type="text" id="help-board-name" /> Code:

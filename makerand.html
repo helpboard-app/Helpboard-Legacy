@@ -41,8 +41,8 @@
 				function getRndInteger(min, max) {
           return Math.floor(Math.random() * (max - min)) + min;
         }
-        alert(getRndInteger(000000,999999))
-				setTimeout(function(){ window.location.replace("/viewer.html"); }, 10000);
+        var id = getRndInteger(000000,999999)
+				setTimeout(function(){ window.location.replace("/viewer.html?i=" + id); }, 10000);
 			</script>
 		</div>
 	</section>

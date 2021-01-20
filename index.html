@@ -24,7 +24,7 @@
 
 		chatChannel.bind('pusher:subscription_succeeded', function() {
       var wasTriggered = pusher.trigger('client-event', {some: 'data'});
-      console.log(wasTriggered);
+      alert(wasTriggered);
   });
 	</script>
 	<nav class="navbar" role="navigation" aria-label="main navigation">

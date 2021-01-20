@@ -71,8 +71,10 @@
 	<section class="section">
 		<div class="container">
 			<div class="container is-max-desktop">
-				<div class="notification is-primary" id="id-title">
-					$id
+				<div class="notification">
+					<div class="content has-text-centered">
+						Help Board Code: <span id="id-title"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -82,6 +84,37 @@
     const id = urlParams.get('i');
     document.getElementById("id-title").innerHTML = id;
 	</script>
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="notification">
+					<div class="columns">
+						<div class="column">
+							<button class="button is-primary" >Queue View</button>
+						</div>
+						<div class="column">
+							<button class="button is-primary">Questiondesk View</button>
+						</div>
+						<div class="column">
+							<button class="button is-primary">Settings</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="content has-te<xt-centered">
+					<div id="activeView">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
       Name: <input type="text" id="help-board-name" /> Code:

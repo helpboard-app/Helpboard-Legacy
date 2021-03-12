@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Help Board - Version 1.0.0</title>
+	<title>Help Board</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"
@@ -18,41 +18,16 @@
 	</script>
 	<script async src="//static.getclicky.com/js"></script>
 
-	<script>
-		// Enable pusher logging - don't include this in production
-      Pusher.logToConsole = true;
-
-      var pusher = new Pusher("3b954feefe6f247a5008", {
-        cluster: "us2"
-      });
-
-      var channel = pusher.subscribe("my-channel");
-      channel.bind("my-event", function(data) {
-        alert(JSON.stringify(data));
-      });
-	</script>
 	<nav class="navbar" role="navigation" aria-label="main navigation">
 		<div class="navbar-brand">
 			<a class="navbar-item" href="/index.html">
 				Help Board
 			</a>
 
-			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-				data-target="navbarBasicExample">
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-			</a>
+
 		</div>
 
-		<a class="navbar-item">
-			Docs
-		</a>
-
-		<a class="navbar-item">
-			Videos
-		</a>
+		
 
 		<div class="navbar-end">
 			<div class="navbar-item">
@@ -81,9 +56,15 @@
 				Please type your name and Help Board code below to join the Help
 				Board.
 			</p>
+		<form action="/post-join-hb.php" method="post">
+		    <div class="field">
+				<p class="control">
+					<input class="input" type="text" placeholder="Your First Name" name="fname" required/>
+          </p>
+			</div>
 			<div class="field">
 				<p class="control">
-					<input class="input" type="text" placeholder="Your Name" />
+					<input class="input" type="text" placeholder="Your Last Name" name="lname" required/>
           </p>
 			</div>
 			<div class="field">
@@ -92,16 +73,28 @@
               class="input"
               type="text"
               placeholder="Your Help Board Code"
+              name="hb_id"
+              required
+            />
+          </p>
+			</div>
+						<div class="field">
+				<p class="control">
+					<input
+              class="input"
+              type="text"
+              placeholder="Your Question"
+              name="hb_q"
             />
           </p>
 			</div>
 			<div class="field">
 				<p class="control">
-					<button class="button is-success">
-              Join
-            </button>
+                    <input type="submit" class="button is-success" value="Submit">
 				</p>
 			</div>
+		</form>
+		
 		</div>
 	</section>
 	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
@@ -142,8 +135,10 @@
 	<footer class="footer">
 		<div class="content has-text-centered">
 			<p>
-				<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>. Version
-				1.0.0 Beta. <a href="https://stats.uptimerobot.com/Pgo6wu4nAZ">Service Status</a> </p>
+				<script>var xhttp=new XMLHttpRequest;xhttp.onreadystatechange=function(){4==this.readyState&&200==this.status&&(document.getElementById("app_ver").innerHTML=this.responseText)},xhttp.open("GET","app_ver.txt",!0),xhttp.send();</script>
+					<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>.
+					Version
+					</p><div id="app_ver"></div><p> <a href="https://status.helpboard.app/">Service Status</a> </p>
 		</div>
 	</footer>
 </body>

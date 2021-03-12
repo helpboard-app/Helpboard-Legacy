@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Help Board - Version 1.0.0</title>
+	<title>Help Board</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"
@@ -24,37 +24,23 @@
 				Help Board
 			</a>
 
-			<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-				data-target="navbarBasicExample">
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-				<span aria-hidden="true"></span>
-			</a>
+
 		</div>
 
-		<div id="navbarBasicExample" class="navbar-menu">
-			<div class="navbar-start">
-				<a class="navbar-item">
-					Docs
-				</a>
+		
 
-				<a class="navbar-item">
-					Videos
-				</a>
-			</div>
-			<div class="navbar-end">
-				<div class="navbar-item">
-					<div class="buttons">
-						<a class="button is-primary" href="/makerand.html">
-							<strong>Make a Help Board</strong>
-						</a>
-						<a class="button is-light" href="/join.html">
-							Join a Help Board
-						</a>
-					</div>
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button is-primary" href="/makerand.html">
+						<strong>Make a Help Board</strong>
+					</a>
+					<a class="button is-light" href="/join.html">
+						Join a Help Board
+					</a>
 				</div>
 			</div>
+		</div>
 		</div>
 	</nav>
 
@@ -86,10 +72,7 @@
 							<button class="button is-primary" onclick="launchQueue()">Queue View</button>
 						</div>
 						<div class="column">
-							<button class="button is-primary" onclick="launchQuestiondesk()">Questiondesk View</button>
-						</div>
-						<div class="column">
-							<button class="button is-primary" onclick="launchSettings()">Settings</button>
+							<button class="button is-primary" onclick="launchQuestiondesk()">Live View</button>
 						</div>
 					</div>
 				</div>
@@ -102,12 +85,7 @@
 			<div class="container is-max-desktop">
 				<div class="content has-text-centered">
 					<div id="activeView">
-						<h1 class="title">Please type your name and then click a view to start anwsering questions.</h1>
-						<div class="field">
-							<div class="control">
-								<input class="input" type="text" placeholder="Name" id="user-name">
-                </div>
-							</div>
+						<h1 class="title">Click a view to start anwsering questions.</h1>
 						</div>
 					</div>
 				</div>
@@ -117,7 +95,7 @@
 
 	<script>
 		function launchQuestiondesk(){
-      window.location = "/qdesk.html?i=" + id;
+      window.location = "/live.html?i=" + id;
     }
     function launchQueue(){
       window.location = "/queue.html?i=" + id;
@@ -149,9 +127,10 @@
 	<footer class="footer">
 		<div class="content has-text-centered">
 			<p>
-				<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>.
-				Version
-				1.0.0 Beta. <a href="https://stats.uptimerobot.com/Pgo6wu4nAZ">Service Status</a> </p>
+				<script>var xhttp=new XMLHttpRequest;xhttp.onreadystatechange=function(){4==this.readyState&&200==this.status&&(document.getElementById("app_ver").innerHTML=this.responseText)},xhttp.open("GET","app_ver.txt",!0),xhttp.send();</script>
+					<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>.
+					Version
+					<div id="app_ver"></div> <a href="https://status.helpboard.app/">Service Status</a>
 		</div>
 	</footer>
 </body>

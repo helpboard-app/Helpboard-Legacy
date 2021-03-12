@@ -81,7 +81,7 @@
 				<div class="notification">
 					<div class="columns">
 						<div class="column">
-							<button class="button is-primary" onclick="launchHome()">Exit Questiondesk</button>
+							<button class="button is-primary" onclick="launchHome()">Exit Queue View</button>
 						</div>
 					</div>
 				</div>
@@ -93,14 +93,83 @@
 		<div class="container">
 			<div class="container is-max-desktop">
 				<div class="content has-text-centered">
+				    <h1 class="title">Helpboard Queue:</h1>
 					<div id="activeView">
-						<h1 class="title">Questiondesk Version 1.0.0 Beta</h1>
+						
+						
 					</div>
 				</div>
 			</div>
 		</div>
 		</div>
 	</section>
+
+<script>
+  var postdata1 = "hb_id=" + id ;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("activeView").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "post-get-name-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+  
+  setInterval(function(){ location.reload(); }, 5000);
+  
+  function openwindow(ele) {
+      window.open("https://helpboard.app/hbusr.html?name=" + ele.innerHTML + "&hb_id=" + id, 'usrwin', 'width=400,height=650')
+  }
+ 
+/*  // Delete from queue:
+  function search(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value;
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("Successfully deleted: " + ele.value + " from the queue!");
+                location.reload();
+    }
+  };
+  xhttp.open("POST", "post-delete-name-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+
+function search_question(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value;
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("The question from: " + ele.value + " is: " + this.responseText);
+    }
+  };
+  xhttp.open("POST", "post-get-question-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+
+function search_question_ans(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value + "&q_ans=" + prompt("Type the question answer and hit enter: ");
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("The question answer for: " + ele.value + " has been set.");
+    }
+  };
+  xhttp.open("POST", "post-set-qdesk-question-ans-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+*/
+</script>
 
 	<script>
 		function launchQuestiondesk(){
@@ -116,24 +185,6 @@
       window.location = "/viewer.html?i=" + id;
     }
 	</script>
-
-	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
-      Name: <input type="text" id="help-board-name" /> Code:
-      <input type="text" id="help-board-code" />
-      <input type="submit" />
-    </form> -->
-
-	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
-	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
-
-	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
-
-	<!-- Add Firebase products that you want to use -->
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
-
 
 	</div>
 	<footer class="footer">

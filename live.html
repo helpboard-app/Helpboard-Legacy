@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Help Board</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"
+		integrity="sha512-mA5b7w9mZvGLWgjIqp9KhWNzkkZ/H3gC4Ua6GOn9m/xl1UF4ghH8GsriKvAYxLsxoKvn6NdebW7kZ6iGB3CGSg=="
+		crossorigin="anonymous"></script>
+	<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+	<script>
+		var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101297420);
+	</script>
+	<script async src="//static.getclicky.com/js"></script>
+
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('i');
+    document.getElementById("id-title").innerHTML = id;
+	</script>
+
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="notification">
+					<div class="content has-text-centered">
+						Help Board Code: <span id="id-title"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<script>
+		const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('i');
+    document.getElementById("id-title").innerHTML = id;
+	</script>
+
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="content has-text-centered">
+				    <h1 class="title">Queue:</h1>
+					<div id="activeView">
+						
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+<script>
+        function openwindow(ele){
+            var r = confirm("Are you sure you want to remove this person from your helpboard?");
+              if (r == true) {
+                location.replace('get-delete-name-hb-noredir.php?name=' + ele.innerHTML + '&hb_id=' + id + "&back=https://helpboard.app/live.html?i=" + id);
+              } else {
+                
+              }
+        }
+  var postdata1 = "hb_id=" + id ;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("activeView").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "post-get-name-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+  
+ 
+  // Delete from queue:
+  function search(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value;
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("Successfully deleted: " + ele.value + " from the queue!");
+                location.reload();
+    }
+  };
+  xhttp.open("POST", "post-delete-name-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+
+function search_question(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value;
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("The question from: " + ele.value + " is: " + this.responseText);
+    }
+  };
+  xhttp.open("POST", "post-get-question-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+
+function search_question_ans(ele) {
+    if(event.key === 'Enter') {
+          var postdata1 = "hb_id=" + id + "&name=" + ele.value + "&q_ans=" + prompt("Type the question answer and hit enter: ");
+    var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+                alert("The question answer for: " + ele.value + " has been set.");
+    }
+  };
+  xhttp.open("POST", "post-set-qdesk-question-ans-hb.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send(postdata1);
+    }
+}
+
+setInterval(function(){ location.reload(); }, 5000);
+</script>
+
+	<script>
+		function launchQuestiondesk(){
+      window.location = "/qdesk.html?i=" + id;
+    }
+    function launchQueue(){
+      window.location = "/queue.html?i=" + id;
+    }
+    function launchSettings(){
+      window.location = "/settings.html?i=" + id;
+    }
+    function launchHome(){
+      window.location = "/viewer.html?i=" + id;
+    }
+	</script>
+</body>
+
+</html>

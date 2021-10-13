@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Help Board</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.9.2/sass.min.js"
+		integrity="sha512-mA5b7w9mZvGLWgjIqp9KhWNzkkZ/H3gC4Ua6GOn9m/xl1UF4ghH8GsriKvAYxLsxoKvn6NdebW7kZ6iGB3CGSg=="
+		crossorigin="anonymous"></script>
+	<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.3.2/dist/umd/supabase.min.js"></script>
+	<script>
+		var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101297420);
+	</script>
+	<script async src="//static.getclicky.com/js"></script>
+
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="navbar-item" href="/index.html">
+				Help Board
+			</a>
+
+
+		</div>
+
+		
+
+		<div class="navbar-end">
+			<div class="navbar-item">
+				<div class="buttons">
+					<a class="button is-primary" href="/makerand.html">
+						<strong>Make a Help Board</strong>
+					</a>
+					<a class="button is-light" href="/join.html">
+						Join a Help Board
+					</a>
+				</div>
+			</div>
+		</div>
+		</div>
+	</nav>
+
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="notification">
+					<div class="content has-text-centered">
+						Help Board Code: <span id="id-title"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('i');
+    document.getElementById("id-title").innerHTML = id;
+	</script>
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="notification">
+					<div class="columns">
+						<div class="column">
+							<button class="button is-primary" onclick="launchQueue()">Queue View</button>
+						</div>
+						<div class="column">
+							<button class="button is-primary" onclick="launchQuestiondesk()">Live View</button>
+						</div>
+						<div class="column">
+							<button class="button is-primary" onclick="launchLVLC()">Live View With Large Code</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<div class="container is-max-desktop">
+				<div class="content has-text-centered">
+					<div id="activeView">
+						<h1 class="title">Click a view to start anwsering questions.</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script>
+		function launchQuestiondesk(){
+      window.location = "/live.html?i=" + id;
+    }
+    function launchQueue(){
+      window.location = "/queue.html?i=" + id;
+    }
+    function launchSettings(){
+      window.location = "/settings.html?i=" + id;
+    }
+    function launchLVLC(){
+      window.location = "/livelgc.html?i=" + id;
+    }
+	</script>
+
+	<!--<form action="#" id="help-board-form" onsubmit="helpboardsubmit()">
+      Name: <input type="text" id="help-board-name" /> Code:
+      <input type="text" id="help-board-code" />
+      <input type="submit" />
+    </form> -->
+
+	<!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+	<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+
+	<!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+
+	<!-- Add Firebase products that you want to use -->
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-firestore.js"></script>
+
+
+	</div>
+	<footer class="footer">
+		<div class="content has-text-centered">
+			<p>
+				<script>var xhttp=new XMLHttpRequest;xhttp.onreadystatechange=function(){4==this.readyState&&200==this.status&&(document.getElementById("app_ver").innerHTML=this.responseText)},xhttp.open("GET","app_ver.txt",!0),xhttp.send();</script>
+					<strong>Help Board</strong> by <a href="https://github.com/user/Brenden2008">Brenden Stahle</a>.
+					Version
+					<div id="app_ver"></div> <a href="https://status.helpboard.app/">Service Status</a>
+		</div>
+	</footer>
+</body>
+
+</html>

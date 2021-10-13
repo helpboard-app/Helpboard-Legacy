@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script>
+	const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get('hb_id');
+    var name = urlParams.get('name');
+	</script>
+	<script>
+      var postdata1 = "hb_id=" + id + "&name=" + name;
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("question").innerHTML = "Question: " + this.responseText;
+        }
+      };
+      xhttp.open("POST", "post-get-question-hb.php", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(postdata1);
+      
+      var postdata1 = "name=" + name;
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("nameele").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("POST", "postback.php", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(postdata1);
+      
+      var postdata1 = "name=" + name + "&hb_id=" + id ;
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("questionans").innerHTML = "Current Answer: " + this.responseText
+        }
+      };
+      xhttp.open("POST", "post-check-question-hb.php", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(postdata1);
+	</script>
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+        <div class="block">
+      <h1 class="title" id="nameele">
+        (Name)
+      </h1>
+      </div>
+      <div class="block">
+      <p class="subtitle" id="question">
+        Question: 
+      </p>
+      <p class="subtitle" id="questionans">
+        Current Answer:
+      </p>
+      </div>
+      <div class="block">
+       <input class="input" type="text" placeholder="Answer the question here" id="qans">
+       </div>
+       <div class="block">
+       <div class="buttons">
+            <button class="button is-primary" onclick="ansn()" id="ansbutton">Anwser</button>
+            <button class="button is-danger" onclick="ansnr()">EXPERIMENTAL: Anwser and Remove from Queue</button>
+    </div>
+    </div>
+    <div class="block">
+       <div class="buttons">
+            <button class="button" onclick="remq()">Remove from queue</button>
+            <button class="button" onclick="window.close()">Close</button>
+    </div>
+    </div>
+    </div>
+    <script>
+        function remq(){
+            location.replace('get-delete-name-hb.php?name=' + name + '&hb_id=' + id);
+        }
+        // Get the input field
+        var input = document.getElementById("qans");
+        
+        // Execute a function when the user releases a key on the keyboard
+        input.addEventListener("keyup", function(event) {
+          // Number 13 is the "Enter" key on the keyboard
+          if (event.keyCode === 13) {
+            // Cancel the default action, if needed
+            event.preventDefault();
+            // Trigger the button element with a click
+            document.getElementById("ansbutton").click();
+          }
+        });
+        function ans(ele){
+            location.replace('get-set-qdesk-question-ans-hb.php?name=' + name + '&hb_id=' + id + "&q_ans=" + ele.value);
+        }
+        function ansn(){
+            location.replace('get-set-qdesk-question-ans-hb.php?name=' + name + '&hb_id=' + id + "&q_ans=" + document.getElementById("qans").value);
+        }
+        function ansnr(){
+            location.replace('get-set-qdesk-question-ans-hb-r.php?name=' + name + '&hb_id=' + id + "&q_ans=" + document.getElementById("qans").value);
+        }
+    </script>
+  </section>
+  </body>
+</html>
